@@ -13,7 +13,7 @@ public class TpSpringGhobriniApplication {
 		SpringApplication.run(TpSpringGhobriniApplication.class, args);
 	}
 	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
+	public String hello(@RequestParam(value = "name", defaultValue = "Le monde") String name) {
+		return String.format("Bonjour %s!", name);
 	}
 }
