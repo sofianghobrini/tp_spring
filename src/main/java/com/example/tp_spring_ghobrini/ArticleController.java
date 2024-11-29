@@ -24,7 +24,7 @@ public class ArticleController {
         return articleRepository.findAll();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/articles/{id}")
     public Article modifierArticle(@PathVariable Long id, @RequestBody Article updatedArticle) {
         return articleRepository.findById(id)
                 .map(article -> {
@@ -34,7 +34,7 @@ public class ArticleController {
                 .orElseThrow(() -> new RuntimeException("Article introuvable"));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/articles/{id}")
     public void supprimerArticle(@PathVariable Long id) {
         articleRepository.deleteById(id);
     }
