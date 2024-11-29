@@ -1,7 +1,9 @@
 package com.example.tp_spring_ghobrini;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/articles")
@@ -10,7 +12,9 @@ public class ArticleController {
     private ArticleRepository articleRepository;
 
     @PostMapping
-    public Article creerArticle(@RequestBody Article article) {
+    public Article creerArticle(@RequestBody Article article, @RequestBody String contenu) {
+        article.setContenu(contenu);
+        article.setAuthor(article.getAuthor());
         article.setDatePublication(LocalDate.now());
         return articleRepository.save(article);
     }

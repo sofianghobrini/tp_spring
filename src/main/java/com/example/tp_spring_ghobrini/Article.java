@@ -8,7 +8,7 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String auteur;
+    private String auteur; //(relier auteur à User)
     private String contenu;
     private LocalDate datePublication;
 
@@ -21,13 +21,9 @@ public class Article {
         this.id = id;
     }
 
-    public void setAuteur(String auteur) {
-        this.auteur=auteur;
-    }
-
-    public String getAuteur() {
-        return auteur;
-    }
+    @ManyToOne(fetch = FetchType.LAZY) // Relation avec l'utilisateur (auteur)
+    @JoinColumn(name = "author_id", nullable = false) // La clé étrangère sera "author_id"
+    private User author;
 
     public void setContenu(String contenu) {
         this.contenu = contenu;
@@ -43,5 +39,13 @@ public class Article {
 
     public LocalDate getDatePublication() {
         return datePublication;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }
