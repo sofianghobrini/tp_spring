@@ -30,7 +30,6 @@ public class TpSpringGhobriniApplication {
 		User n = new User();
 		n.setName(name);
 		n.setRole(role);
-		n.setId(userRepository.count());
 		n.setPassword(password);
 
 		userRepository.save(n);
