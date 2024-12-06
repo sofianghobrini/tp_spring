@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import com.example.tp_spring_ghobrini.user.User;
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "articles")
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +14,9 @@ public class Article {
     private String auteur; //(relier auteur à User)
     private String contenu;
     private LocalDate datePublication;
+    @ManyToOne(fetch = FetchType.LAZY) // Relation avec l'utilisateur (auteur)
+    @JoinColumn(name = "author_id", nullable = false) // La clé étrangère sera "author_id"
+    private User author;
 
     //GETTER et SETTER
     public Long getId() {
@@ -21,10 +26,6 @@ public class Article {
     public void setId(Long id) {
         this.id = id;
     }
-
-    @ManyToOne(fetch = FetchType.LAZY) // Relation avec l'utilisateur (auteur)
-    @JoinColumn(name = "author_id", nullable = false) // La clé étrangère sera "author_id"
-    private User author;
 
     public void setContenu(String contenu) {
         this.contenu = contenu;

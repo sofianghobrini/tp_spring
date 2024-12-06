@@ -11,13 +11,16 @@ public class ArticleController {
     @Autowired
     private ArticleRepository articleRepository;
 
+    public ArticleController(ArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
+    }
+
     @PostMapping
-    public Article creerArticle(@RequestBody Article article, @RequestBody String contenu) {
-        article.setContenu(contenu);
-        article.setAuthor(article.getAuthor());
+    public Article creerArticle(@RequestBody Article article) {
         article.setDatePublication(LocalDate.now());
         return articleRepository.save(article);
     }
+
 
     @GetMapping
     public List<Article> lireArticles() {
@@ -31,7 +34,7 @@ public class ArticleController {
                     article.setContenu(updatedArticle.getContenu());
                     return articleRepository.save(article);
                 })
-                .orElseThrow(() -> new RuntimeException("Article introuvable"));
+                .orElseThrow(() -> new ArticleNotFoundException(id));
     }
 
     @DeleteMapping("/articles/{id}")
