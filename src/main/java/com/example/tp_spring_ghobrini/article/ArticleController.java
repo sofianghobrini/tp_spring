@@ -1,5 +1,6 @@
 package com.example.tp_spring_ghobrini.article;
 
+import com.example.tp_spring_ghobrini.user.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
@@ -10,13 +11,18 @@ import java.util.List;
 public class ArticleController {
     @Autowired
     private ArticleRepository articleRepository;
+    private UserRepository userRepository;
 
-    public ArticleController(ArticleRepository articleRepository) {
+    public ArticleController(ArticleRepository articleRepository, UserRepository userRepository) {
         this.articleRepository = articleRepository;
+        this.userRepository = userRepository;
     }
 
-    @PostMapping
+    @PostMapping()
     public Article creerArticle(@RequestBody Article article) {
+        User author = userRepository.findById(article.getAuthor().getId())
+                .orElseThrow(() -> new UserNotFoundException(article.getAuthor().getId()));
+        article.setAuthor(author);
         article.setDatePublication(LocalDate.now());
         return articleRepository.save(article);
     }

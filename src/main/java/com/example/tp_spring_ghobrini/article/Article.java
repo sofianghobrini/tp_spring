@@ -11,10 +11,10 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String auteur; //(relier auteur à User)
+    //private String auteur; //(relier auteur à User)
     private String contenu;
     private LocalDate datePublication;
-    @ManyToOne(fetch = FetchType.LAZY) // Relation avec l'utilisateur (auteur)
+    @ManyToOne(fetch = FetchType.EAGER) // Relation avec l'utilisateur (auteur)
     @JoinColumn(name = "author_id", nullable = false) // La clé étrangère sera "author_id"
     private User author;
 
