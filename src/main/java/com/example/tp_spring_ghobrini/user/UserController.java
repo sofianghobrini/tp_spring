@@ -31,7 +31,7 @@ public class UserController {
     // Single item
 
     @GetMapping("/id")
-    User one(@RequestParam Long id) {
+    User one(@RequestParam (required = false) Long id) {
 
         return repository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));

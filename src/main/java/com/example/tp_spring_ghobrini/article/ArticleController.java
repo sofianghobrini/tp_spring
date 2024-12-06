@@ -35,7 +35,7 @@ public class ArticleController {
     }
 
     @GetMapping("/id")
-    public Article getArticleById(@RequestParam Long id) {
+    public Article getArticleById(@RequestParam (required = false) Long id) {
         return articleRepository.findById(id)
                 .orElseThrow(() -> new ArticleNotFoundException(id));
     }
