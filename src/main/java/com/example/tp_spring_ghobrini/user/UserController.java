@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/utilisateurs")
 public class UserController {
     private final UserRepository repository;
 
@@ -15,27 +16,28 @@ public class UserController {
 
     // Aggregate root
     // tag::get-aggregate-root[]
-    @GetMapping("/utilisateurs")
+    @GetMapping
     List<User> all() {
         return (List<User>) repository.findAll();
     }
     // end::get-aggregate-root[]
 
-    @PostMapping("/utilisateurs")
+
+    @PostMapping
     User newUser(@RequestBody User newUser) {
         return repository.save(newUser);
     }
 
     // Single item
 
-    @GetMapping("/utilisateurs/{id}")
-    User one(@PathVariable Long id) {
+    @GetMapping("/id")
+    User one(@RequestParam Long id) {
 
         return repository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    @PutMapping("/utilisateurs/{id}")
+    @PutMapping
     User replaceEmployee(@RequestBody User newUser, @PathVariable Long id) {
 
         return repository.findById(id)
@@ -49,7 +51,7 @@ public class UserController {
                 });
     }
 
-    @DeleteMapping("/utilisateurs/{id}")
+    @DeleteMapping
     void deleteUser(@PathVariable Long id) {
         repository.deleteById(id);
     }

@@ -3,6 +3,7 @@ package com.example.tp_spring_ghobrini.article;
 import java.time.LocalDate;
 
 import com.example.tp_spring_ghobrini.user.User;
+import com.example.tp_spring_ghobrini.like.Like;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,10 +13,13 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //private String auteur; //(relier auteur à User)
+    private String title;
     private String contenu;
     private LocalDate datePublication;
     @ManyToOne(fetch = FetchType.EAGER) // Relation avec l'utilisateur (auteur)
-    @JoinColumn(name = "author_id", nullable = false) // La clé étrangère sera "author_id"
+    // Les clés étrangères
+    @JoinColumn(name = "author_id", nullable = false)
+    @JoinColumn(name = "like_id", nullable = false)
     private User author;
 
     //GETTER et SETTER
@@ -25,6 +29,14 @@ public class Article {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setContenu(String contenu) {

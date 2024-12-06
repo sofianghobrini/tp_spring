@@ -22,6 +22,7 @@ public class ArticleController {
     public Article creerArticle(@RequestBody Article article) {
         User author = userRepository.findById(article.getAuthor().getId())
                 .orElseThrow(() -> new UserNotFoundException(article.getAuthor().getId()));
+        article.setTitle(article.getTitle());
         article.setAuthor(author);
         article.setDatePublication(LocalDate.now());
         return articleRepository.save(article);
@@ -32,6 +33,13 @@ public class ArticleController {
     public List<Article> lireArticles() {
         return articleRepository.findAll();
     }
+
+    @GetMapping("/id")
+    public Article getArticleById(@RequestParam Long id) {
+        return articleRepository.findById(id)
+                .orElseThrow(() -> new ArticleNotFoundException(id));
+    }
+
 
     @PutMapping("/{id}")
     public Article modifierArticle(@PathVariable Long id, @RequestBody Article updatedArticle) {
