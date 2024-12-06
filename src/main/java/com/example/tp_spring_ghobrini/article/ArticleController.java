@@ -33,7 +33,7 @@ public class ArticleController {
         return articleRepository.findAll();
     }
 
-    @PutMapping("/articles/{id}")
+    @PutMapping("/{id}")
     public Article modifierArticle(@PathVariable Long id, @RequestBody Article updatedArticle) {
         return articleRepository.findById(id)
                 .map(article -> {
@@ -43,7 +43,7 @@ public class ArticleController {
                 .orElseThrow(() -> new ArticleNotFoundException(id));
     }
 
-    @DeleteMapping("/articles/{id}")
+    @DeleteMapping("/{id}")
     public void supprimerArticle(@PathVariable Long id) {
         articleRepository.deleteById(id);
     }
