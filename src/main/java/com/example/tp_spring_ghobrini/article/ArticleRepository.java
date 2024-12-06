@@ -1,4 +1,4 @@
-package com.example.tp_spring_ghobrini;
+package com.example.tp_spring_ghobrini.article;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

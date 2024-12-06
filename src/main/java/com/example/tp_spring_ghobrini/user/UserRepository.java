@@ -1,4 +1,4 @@
-package com.example.tp_spring_ghobrini;
+package com.example.tp_spring_ghobrini.user;
 
 import org.springframework.data.repository.CrudRepository;
 

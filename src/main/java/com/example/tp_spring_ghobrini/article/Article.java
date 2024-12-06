@@ -1,7 +1,8 @@
-package com.example.tp_spring_ghobrini;
+package com.example.tp_spring_ghobrini.article;
 
 import java.time.LocalDate;
 
+import com.example.tp_spring_ghobrini.user.User;
 import jakarta.persistence.*;
 
 public class Article {

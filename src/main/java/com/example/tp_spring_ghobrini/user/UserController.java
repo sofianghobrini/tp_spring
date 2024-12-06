@@ -1,6 +1,5 @@
-package com.example.tp_spring_ghobrini;
+package com.example.tp_spring_ghobrini.user;
 
-import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

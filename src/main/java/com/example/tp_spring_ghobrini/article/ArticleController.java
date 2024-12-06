@@ -1,4 +1,4 @@
-package com.example.tp_spring_ghobrini;
+package com.example.tp_spring_ghobrini.article;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
