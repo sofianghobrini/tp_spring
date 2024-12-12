@@ -16,11 +16,13 @@ public class Article {
     private String title;
     private String contenu;
     private LocalDate datePublication;
-    @ManyToOne(fetch = FetchType.EAGER) // Relation avec l'utilisateur (auteur)
     // Les clés étrangères
+    @ManyToOne(fetch = FetchType.EAGER) // Relation avec l'utilisateur (auteur)
     @JoinColumn(name = "author_id", nullable = false)
-    @JoinColumn(name = "like_id", nullable = false)
     private User author;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "like_id", nullable = false)
+    private Like like;
 
     //GETTER et SETTER
     public Long getId() {
