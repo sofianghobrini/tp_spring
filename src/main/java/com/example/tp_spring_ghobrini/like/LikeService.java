@@ -12,7 +12,7 @@ public class LikeService {
 
 
     public Like addLike(Article article, User user, boolean isLike) {
-        Like like = likeRepository.findByArticle(article, user)
+        Like like = likeRepository.findByArticleAndUser(article, user)
                 .orElse(new Like());
         like.setArticle(article);
         like.setLike(isLike);
@@ -20,7 +20,7 @@ public class LikeService {
     }
 
     public Like addDislike(Article article, User user, boolean isDisLike) {
-        Like like = likeRepository.findByArticle(article, user)
+        Like like = likeRepository.findByArticleAndUser(article, user)
                 .orElse(new Like());
         like.setArticle(article);
         like.setDislike(isDisLike);
@@ -28,7 +28,7 @@ public class LikeService {
     }
 
     public void removeLikeOrDislike(Article article, User user) {
-        likeRepository.findByArticle(article, user)
+        likeRepository.findByArticleAndUser(article, user)
                 .ifPresent(likeRepository::delete);
     }
 

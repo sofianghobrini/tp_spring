@@ -59,7 +59,7 @@ public class ArticleController {
         articleRepository.deleteById(id);
     }
 
-    @PutMapping("/{id}/user/{id_user}/dislike")
+    @PostMapping("/{id}/user/{id_user}/dislike")
     public void dislikerUnArticle(@PathVariable Long id, @PathVariable Long id_user) {
         // Récupérer l'article par son ID
         Article article = articleRepository.findById(id)
@@ -69,7 +69,7 @@ public class ArticleController {
         likeService.addDislike(article, user, true);
     }
 
-    @PutMapping("/{id}/user/{id_user}/like")
+    @PostMapping("/{id}/user/{id_user}/like")
     public void likerUnArticle(@PathVariable Long id, @PathVariable Long id_user) {
         // Récupérer l'article par son ID
         Article article = articleRepository.findById(id)
