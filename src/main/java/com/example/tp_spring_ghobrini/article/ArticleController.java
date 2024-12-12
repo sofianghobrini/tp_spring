@@ -1,5 +1,6 @@
 package com.example.tp_spring_ghobrini.article;
 
+import com.example.tp_spring_ghobrini.like.*;
 import com.example.tp_spring_ghobrini.user.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +13,12 @@ public class ArticleController {
     @Autowired
     private ArticleRepository articleRepository;
     private UserRepository userRepository;
+    private LikeService likeService;
 
-    public ArticleController(ArticleRepository articleRepository, UserRepository userRepository) {
+    public ArticleController(ArticleRepository articleRepository, UserRepository userRepository, LikeService likeService) {
         this.articleRepository = articleRepository;
         this.userRepository = userRepository;
+        this.likeService = likeService;
     }
 
     @PostMapping()
@@ -55,4 +58,30 @@ public class ArticleController {
     public void supprimerArticle(@PathVariable Long id) {
         articleRepository.deleteById(id);
     }
+
+    @PutMapping("/dislike/{id}")
+    public void dislikerUnArticle(@PathVariable Long id, @RequestParam String title) {
+        // Récupérer l'article par son ID
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new ArticleNotFoundException(id));
+        likeService.addDislike(article, true);
+    }
+
+    @PutMapping("/like/{id}")
+    public void likerUnArticle(@PathVariable Long id, @RequestParam String title) {
+        // Récupérer l'article par son ID
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new ArticleNotFoundException(id));
+        likeService.addLike(article, true);
+    }
+
+    @DeleteMapping("/retirerLikeDislike/{id}")
+    public void supprimerLike(@PathVariable Long id) {
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new ArticleNotFoundException(id));
+        likeService.removeLikeOrDislike(article);
+    }
+
+
+
 }
