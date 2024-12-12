@@ -64,4 +64,17 @@ public class Article {
     public void setAuthor(User author) {
         this.author = author;
     }
+
+    public Like getLike() {
+        return like;
+    }
+    public void setLike(Like like) {
+        this.like = like;
+    }
+    public void setdisLike(Like like) {
+        this.like = like;
+    }
+    public Like getDislike() {
+        return like;
+    }
 }

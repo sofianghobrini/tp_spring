@@ -1,6 +1,7 @@
 package com.example.tp_spring_ghobrini.like;
 
 import com.example.tp_spring_ghobrini.article.*;
+import com.example.tp_spring_ghobrini.user.User;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
@@ -10,24 +11,24 @@ public class LikeService {
     private LikeRepository likeRepository;
 
 
-    public Like addLike(Article article, boolean isLike) {
-        Like like = likeRepository.findByArticle(article)
+    public Like addLike(Article article, User user, boolean isLike) {
+        Like like = likeRepository.findByArticle(article, user)
                 .orElse(new Like());
         like.setArticle(article);
         like.setLike(isLike);
         return likeRepository.save(like);
     }
 
-    public Like addDislike(Article article, boolean isDisLike) {
-        Like like = likeRepository.findByArticle(article)
+    public Like addDislike(Article article, User user, boolean isDisLike) {
+        Like like = likeRepository.findByArticle(article, user)
                 .orElse(new Like());
         like.setArticle(article);
         like.setDislike(isDisLike);
         return likeRepository.save(like);
     }
 
-    public void removeLikeOrDislike(Article article) {
-        likeRepository.findByArticle(article)
+    public void removeLikeOrDislike(Article article, User user) {
+        likeRepository.findByArticle(article, user)
                 .ifPresent(likeRepository::delete);
     }
 

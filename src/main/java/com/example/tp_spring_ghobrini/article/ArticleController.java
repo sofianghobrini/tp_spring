@@ -59,29 +59,34 @@ public class ArticleController {
         articleRepository.deleteById(id);
     }
 
-    @PutMapping("/dislike/{id}")
-    public void dislikerUnArticle(@PathVariable Long id, @RequestParam String title) {
+    @PutMapping("/{id}/user/{id_user}/dislike")
+    public void dislikerUnArticle(@PathVariable Long id, @PathVariable Long id_user) {
         // Récupérer l'article par son ID
         Article article = articleRepository.findById(id)
                 .orElseThrow(() -> new ArticleNotFoundException(id));
-        likeService.addDislike(article, true);
+        User user = userRepository.findById(id_user)
+                .orElseThrow(() -> new UserNotFoundException(id_user));
+        likeService.addDislike(article, user, true);
     }
 
-    @PutMapping("/like/{id}")
-    public void likerUnArticle(@PathVariable Long id, @RequestParam String title) {
+    @PutMapping("/{id}/user/{id_user}/like")
+    public void likerUnArticle(@PathVariable Long id, @PathVariable Long id_user) {
         // Récupérer l'article par son ID
         Article article = articleRepository.findById(id)
                 .orElseThrow(() -> new ArticleNotFoundException(id));
-        likeService.addLike(article, true);
+        User user = userRepository.findById(id_user)
+                .orElseThrow(() -> new UserNotFoundException(id_user));
+        likeService.addLike(article, user, true);
     }
 
     @DeleteMapping("/retirerLikeDislike/{id}")
-    public void supprimerLike(@PathVariable Long id) {
+    public void supprimerLike(@PathVariable Long id, @PathVariable Long id_user) {
         Article article = articleRepository.findById(id)
                 .orElseThrow(() -> new ArticleNotFoundException(id));
-        likeService.removeLikeOrDislike(article);
+        User user = userRepository.findById(id_user)
+                .orElseThrow(() -> new UserNotFoundException(id_user));
+        likeService.removeLikeOrDislike(article, user);
     }
-
 
 
 }
