@@ -12,12 +12,12 @@ import java.util.Collections;
 
 
 @Service
-public class UserDetailService implements UserDetailsService {
+public class UserDetailsServiceR5A05 implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByName(username);
+        User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("L'utilisateur n'existe pas ou n'as pas été trouvé");
         }
