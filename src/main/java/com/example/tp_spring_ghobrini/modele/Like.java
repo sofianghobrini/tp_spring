@@ -1,7 +1,5 @@
-package com.example.tp_spring_ghobrini.like;
+package com.example.tp_spring_ghobrini.modele;
 
-import com.example.tp_spring_ghobrini.article.Article;
-import com.example.tp_spring_ghobrini.user.User;
 import jakarta.persistence.*;
 
 @Entity

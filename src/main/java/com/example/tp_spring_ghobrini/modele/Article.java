@@ -1,9 +1,7 @@
-package com.example.tp_spring_ghobrini.article;
+package com.example.tp_spring_ghobrini.modele;
 
 import java.time.LocalDate;
 
-import com.example.tp_spring_ghobrini.user.User;
-import com.example.tp_spring_ghobrini.like.Like;
 import jakarta.persistence.*;
 
 @Entity

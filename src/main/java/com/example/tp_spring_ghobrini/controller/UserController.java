@@ -1,5 +1,8 @@
-package com.example.tp_spring_ghobrini.user;
+package com.example.tp_spring_ghobrini.controller;
 
+import com.example.tp_spring_ghobrini.modele.User;
+import com.example.tp_spring_ghobrini.exception.UserNotFoundException;
+import com.example.tp_spring_ghobrini.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

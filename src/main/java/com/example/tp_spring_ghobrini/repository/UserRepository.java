@@ -1,5 +1,6 @@
-package com.example.tp_spring_ghobrini.user;
+package com.example.tp_spring_ghobrini.repository;
 
+import com.example.tp_spring_ghobrini.modele.User;
 import org.springframework.data.repository.CrudRepository;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository

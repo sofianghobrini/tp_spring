@@ -1,7 +1,12 @@
-package com.example.tp_spring_ghobrini.article;
+package com.example.tp_spring_ghobrini.controller;
 
-import com.example.tp_spring_ghobrini.like.*;
-import com.example.tp_spring_ghobrini.user.*;
+import com.example.tp_spring_ghobrini.exception.ArticleNotFoundException;
+import com.example.tp_spring_ghobrini.exception.UserNotFoundException;
+import com.example.tp_spring_ghobrini.repository.ArticleRepository;
+import com.example.tp_spring_ghobrini.modele.Article;
+import com.example.tp_spring_ghobrini.modele.User;
+import com.example.tp_spring_ghobrini.repository.UserRepository;
+import com.example.tp_spring_ghobrini.service.LikeService;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;

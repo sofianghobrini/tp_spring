@@ -1,7 +1,8 @@
-package com.example.tp_spring_ghobrini.like;
+package com.example.tp_spring_ghobrini.repository;
 
-import com.example.tp_spring_ghobrini.article.Article;
-import com.example.tp_spring_ghobrini.user.User;
+import com.example.tp_spring_ghobrini.modele.Article;
+import com.example.tp_spring_ghobrini.modele.Like;
+import com.example.tp_spring_ghobrini.modele.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

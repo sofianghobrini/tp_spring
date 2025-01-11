@@ -1,7 +1,9 @@
-package com.example.tp_spring_ghobrini.like;
+package com.example.tp_spring_ghobrini.service;
 
-import com.example.tp_spring_ghobrini.article.*;
-import com.example.tp_spring_ghobrini.user.User;
+import com.example.tp_spring_ghobrini.modele.Article;
+import com.example.tp_spring_ghobrini.modele.Like;
+import com.example.tp_spring_ghobrini.modele.User;
+import com.example.tp_spring_ghobrini.repository.LikeRepository;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
